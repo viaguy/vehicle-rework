@@ -1,3 +1,10 @@
+// should all of this be in a single file? probably not
+// but NPP lets you minimise blocks so its easy enough for me to edit and im lazy
+
+// TODO
+// -make inline 4 sounds less shit
+// -add ability to toggle differential locking on the fly
+
 class CfgPatches
 {
 	class Mod_Vehicle_Rework
@@ -35,52 +42,8 @@ class CfgVehicles
 {
 	class Car;
 	class CarScript: Car
-	{
-		rotationFlags=64;
-		storageCategory=4;
-		debug_ItemCategory=8;
-		displayWeight=0;
-		insideSoundCoef=0.89999998;
-		fuelCapacity=50;
-		brakeFluidCapacity=1;
-		oilCapacity=4;
-		coolantCapacity=6;
-		brakeFluidLeakDebit[]={0,0};
-		oilLeakDebit[]={0,0};
-		coolantLeakDebit[]={0,0};
-		brakeFluidForceCoef[]={0,1,1,1};
-		damageFromOil[]={0,0,1,0};
-		damageFromCoolant[]={0,0,1,0};
-		engineBeltSlot="EngineBelt";
-		batterySlot="CarBattery";
-		electricPowerResName="power";
-		electricConsumptionIgnition=3001;
-		electricConsumptionEngine=0;
-		electricConsumptionLights=0;
-		electricOutputEngine=5;
-		selectionDashboard="light_dashboard";
-		selectionLightFrontL="light_left";
-		selectionLightFrontR="light_right";
-		selectionBrakeLights="light_break";
-		hasHistory=1;
-		class Crew
-		{
-			class Driver
-			{
-				actionSel="seat_driver";
-				proxyPos="crewDriver";
-				getInPos="pos_driver";
-				getInDir="pos_driver_dir";
-				isDriver=1;
-			};
-			class CoDriver
-			{
-				actionSel="seat_coDriver";
-				proxyPos="crewCoDriver";
-				getInPos="pos_coDriver";
-				getInDir="pos_coDriver_dir";
-			};
-		};
+	{	
+		//this shit needs to be here or else addon builder fails
 		class SimulationModule
 		{
 			class Axles
@@ -89,152 +52,17 @@ class CfgVehicles
 				{
 					class Wheels
 					{
-						class Left
-						{
-							inventorySlot="";
-							animTurn="turnfrontleft";
-							animRotation="wheelfrontleft";
-							animDamper="damperfrontleft";
-							wheelHub="wheel_1_1_damper_land";
-						};
-						class Right
-						{
-							inventorySlot="";
-							animTurn="turnfrontright";
-							animRotation="wheelfrontright";
-							animDamper="damperfrontright";
-							wheelHub="wheel_2_1_damper_land";
-						};
-					};
-				};
+					}
+				}
 				class Rear
 				{
 					class Wheels
 					{
-						class Left
-						{
-							inventorySlot="";
-							animTurn="turnbackleft";
-							animRotation="wheelbackleft";
-							animDamper="damperbackleft";
-							wheelHub="wheel_1_2_damper_land";
-						};
-						class Right
-						{
-							inventorySlot="";
-							animTurn="turnbackright";
-							animRotation="wheelbackright";
-							animDamper="damperbackright";
-							wheelHub="wheel_2_2_damper_land";
-						};
-					};
-				};
-			};
-		};
-		attachments[]=
-		{
-			"CarBattery",
-			"Reflector_1_1",
-			"Reflector_2_1"
-		};
-		hiddenSelections[]=
-		{
-			""
-		};
-		hiddenSelectionsTextures[]=
-		{
-			""
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			""
-		};
-		class AnimationSources
-		{
-			class DoorsDriver
-			{
-				source="user";
-				initPhase=0;
-				animPeriod=0.5;
-			};
-			class DoorsCoDriver: DoorsDriver
-			{
-			};
-			class DoorsHood: DoorsDriver
-			{
-			};
-			class DoorsTrunk: DoorsDriver
-			{
-			};
-			class HideDestroyed_1_1
-			{
-				source="user";
-				initPhase=0;
-				animPeriod=0.001;
-			};
-			class HideDestroyed_1_2
-			{
-				source="user";
-				initPhase=0;
-				animPeriod=0.001;
-			};
-			class HideDestroyed_2_1
-			{
-				source="user";
-				initPhase=0;
-				animPeriod=0.001;
-			};
-			class HideDestroyed_2_2
-			{
-				source="user";
-				initPhase=0;
-				animPeriod=0.001;
-			};
-			class AnimHitWheel_1_1
-			{
-				source="Hit";
-				hitpoint="HitWheel_1_1";
-				raw=1;
-			};
-			class AnimHitWheel_1_2: AnimHitWheel_1_1
-			{
-				hitpoint="HitWheel_1_2";
-			};
-			class AnimHitWheel_2_1: AnimHitWheel_1_1
-			{
-				hitpoint="HitWheel_2_1";
-			};
-			class AnimHitWheel_2_2: AnimHitWheel_1_1
-			{
-				hitpoint="HitWheel_2_2";
-			};
-			class HitDoorsHood: AnimHitWheel_1_1
-			{
-				hitpoint="HitDoorsHood";
-			};
-			class HitDoorsTrunk: AnimHitWheel_1_1
-			{
-				hitpoint="HitDoorsTrunk";
-			};
-			class HitDoorsDrivers: AnimHitWheel_1_1
-			{
-				hitpoint="HitDoorsDriver";
-			};
-			class HitDoorsCoDrivers: AnimHitWheel_1_1
-			{
-				hitpoint="HitDoorsCoDriver";
-			};
-			class HitDoorsCargo: AnimHitWheel_1_1
-			{
-				hitpoint="HitDoorsCargo";
-			};
-		};
-		class NoiseCarHorn
-		{
-			strength=30;
-			type="sound";
-		};
-	};
+					}
+				}
+			}
+		}
+	}
 	class OffroadHatchback: CarScript
 	{
 		class SimulationModule: SimulationModule
@@ -409,7 +237,7 @@ class CfgVehicles
 				frictionTorque=130;
 				rollingFriction=0.8;
 				viscousFriction=0;
-				rpmIdle=900;
+				rpmIdle=800;
 				rpmMin=1000;
 				rpmClutch=1500;
 				rpmRedline=4700;
@@ -564,6 +392,47 @@ class CfgVehicles
 				};
 			};
 		};
+		class Sounds
+		{
+			thrust=0.5;
+			thrustTurbo=1;
+			thrustGentle=0.30000001;
+			thrustSmoothCoef=0.05;
+			camposSmoothCoef=0.029999999;
+			soundSetsFilter[]=
+			{
+				"Hatchback_02_Engine_Offload_Ext_Rpm1_SoundSet",
+				"Hatchback_02_Engine_Offload_Ext_Rpm2_SoundSet",
+				"Hatchback_02_Engine_Offload_Ext_Rpm3_SoundSet",
+				"Hatchback_02_Engine_Offload_Ext_Rpm4_SoundSet",
+				"Hatchback_02_Engine_Offload_Ext_Rpm5_SoundSet",
+				"Hatchback_02_Engine_Offload_Ext_Rpm6_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm0_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm1_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm2_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm3_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm4_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm5_SoundSet",
+				"Hatchback_02_Engine_Ext_Rpm6_SoundSet",
+				"Hatchback_02_Engine_Ext_Broken_SoundSet",
+				"Hatchback_02_Tires_rock_slow_Ext_SoundSet",
+				"Hatchback_02_Tires_rock_fast_Ext_SoundSet",
+				"Hatchback_02_Tires_grass_slow_Ext_SoundSet",
+				"Hatchback_02_Tires_grass_fast_Ext_SoundSet",
+				"Hatchback_02_Tires_gravel_slow_Ext_SoundSet",
+				"Hatchback_02_Tires_gravel_fast_Ext_SoundSet",
+				"Hatchback_02_Tires_gravel_dust_fast_Ext_SoundSet",
+				"Hatchback_02_Tires_asphalt_slow_Ext_SoundSet",
+				"Hatchback_02_Tires_asphalt_fast_Ext_SoundSet",
+				"Hatchback_02_Tires_water_slow_Ext_SoundSet",
+				"Hatchback_02_Tires_water_fast_Ext_SoundSet",
+				"Hatchback_02_skid_dirt_SoundSet",
+				"Hatchback_02_dirt_turn_SoundSet",
+				"Hatchback_02_Rain_Ext_SoundSet",
+				"Hatchback_02_damper_left_SoundSet",
+				"Hatchback_02_damper_right_SoundSet"
+			};
+		};
 	};
 	class Sedan_02: CarScript
 	{
@@ -605,7 +474,7 @@ class CfgVehicles
 				frictionTorque=80;
 				rollingFriction=0.5;
 				viscousFriction=0;
-				rpmIdle=900;
+				rpmIdle=800;
 				rpmMin=1000;
 				rpmClutch=2000;
 				rpmRedline=5750;
@@ -642,6 +511,47 @@ class CfgVehicles
 						type="DIFFERENTIAL_OPEN";
 					};
 				};
+			};
+		};
+		class Sounds
+		{
+			thrust=0.5;
+			thrustTurbo=1;
+			thrustGentle=0.3;
+			thrustSmoothCoef=0.05;
+			camposSmoothCoef=0.029999999;
+			soundSetsFilter[]=
+			{
+				"Sedan_02_Engine_Offload_Ext_Rpm1_SoundSet",
+				"Sedan_02_Engine_Offload_Ext_Rpm2_SoundSet",
+				"Sedan_02_Engine_Offload_Ext_Rpm3_SoundSet",
+				"Sedan_02_Engine_Offload_Ext_Rpm4_SoundSet",
+				"Sedan_02_Engine_Offload_Ext_Rpm5_SoundSet",
+				"Sedan_02_Engine_Offload_Ext_Rpm6_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm0_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm1_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm2_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm3_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm4_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm5_SoundSet",
+				"Sedan_02_Engine_Ext_Rpm6_SoundSet",
+				"Sedan_02_Engine_Ext_Broken_SoundSet",
+				"Sedan_02_Tires_rock_slow_Ext_SoundSet",
+				"Sedan_02_Tires_rock_fast_Ext_SoundSet",
+				"Sedan_02_Tires_grass_slow_Ext_SoundSet",
+				"Sedan_02_Tires_grass_fast_Ext_SoundSet",
+				"Sedan_02_Tires_gravel_slow_Ext_SoundSet",
+				"Sedan_02_Tires_gravel_fast_Ext_SoundSet",
+				"Sedan_02_Tires_gravel_dust_fast_Ext_SoundSet",
+				"Sedan_02_Tires_asphalt_slow_Ext_SoundSet",
+				"Sedan_02_Tires_asphalt_fast_Ext_SoundSet",
+				"Sedan_02_Tires_water_slow_Ext_SoundSet",
+				"Sedan_02_Tires_water_fast_Ext_SoundSet",
+				"Sedan_02_skid_dirt_SoundSet",
+				"Sedan_02_dirt_turn_SoundSet",
+				"Sedan_02_Rain_Ext_SoundSet",
+				"Sedan_02_damper_left_SoundSet",
+				"Sedan_02_damper_right_SoundSet"
 			};
 		};
 	};
@@ -1029,7 +939,7 @@ class CfgSoundShaders
 		}
 	    };
 	    frequency="1 * (rpm / 6000)";
-	    volume="engineOn * ((rpm factor [4650, 5750]) * (1 - (rpm factor [5650, 6750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	    volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
 	};
 
 	class Offroad_Engine_Offload_Ext_Rpm6_SoundShader: baseEngineOffroad_SoundShader
@@ -1042,7 +952,7 @@ class CfgSoundShaders
 		}
 	    };
 	    frequency="1 * (rpm / 6000)";
-	    volume="engineOn * ((rpm factor [4650, 5750]) * (1 - (rpm factor [5650, 6750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	    volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
 	};
 	class Offroad_Engine_Ext_Broken_SoundShader: baseEngineOffroad_SoundShader
 	{
@@ -1206,7 +1116,7 @@ class CfgSoundShaders
 			}
 		};
 		frequency="1 * (rpm / 6000)";
-		volume="engineOn * ((rpm factor [4650, 5750]) * (1 - (rpm factor [5650, 6750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
 	};
 	class CivilianSedan_Engine_Offload_Ext_Rpm6_SoundShader: baseEngineCivilianSedan_SoundShader
 	{
@@ -1218,7 +1128,7 @@ class CfgSoundShaders
 			}
 		};
 		frequency="1 * (rpm / 6000)";
-		volume="engineOn * ((rpm factor [4650, 5750]) * (1 - (rpm factor [5650, 6750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
 	};
 	class CivilianSedan_Engine_Ext_Broken_SoundShader: baseEngineCivilianSedan_SoundShader
 	{
@@ -1234,9 +1144,385 @@ class CfgSoundShaders
 		volume="1.4 * 0.75 * 1 * (0.7 + 0.3 * (speed factor [10,60])) * engineOn * 1 * ((900 + ((rpm - 900)/(5600/5600))) factor [(((3250+4400)/2) - 2.5*200),(((3250+4400)/2) + 200)]) * ((1 - 0.25*doors) max campos) * (rpm factor[4500,5000])";
 	};
 	
+	//hatchback 02
+	class baseEngineHatchback_02_SoundShader
+	{
+		range=80;
+	};
+	class Hatchback_02_Engine_Ext_Rpm0_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-700rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 750";
+		volume="0.8 * 1 * engineOn * 0.4 * ((750 + ((rpm - 750)/(8000/5600))) factor [(((750+1000)/2) + 2.5*50),(((750+1000)/2) - 50)]) * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm1_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-1000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 1000";
+		volume="engineOn * ((rpm factor [700, 1250]) * (1 - (rpm factor [1150, 1750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.6 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm1_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-1000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 1000";
+		volume="engineOn * ((rpm factor [700, 1250]) * (1 - (rpm factor [1150, 1750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm2_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-2000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 2000";
+		volume="engineOn * ((rpm factor [1150, 1750]) * (1 - (rpm factor [1650, 2750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.85 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm2_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-2000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 2000";
+		volume="engineOn * ((rpm factor [1150, 1750]) * (1 - (rpm factor [1650, 2750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm3_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-3000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 3000";
+		volume="engineOn * ((rpm factor [1650, 2750]) * (1 - (rpm factor [2650, 3750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm3_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-3000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 3000";
+		volume="engineOn * ((rpm factor [1650, 2750]) * (1 - (rpm factor [2650, 3750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm4_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-4000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 4000";
+		volume="engineOn * ((rpm factor [2650, 3750]) * (1 - (rpm factor [3650, 4750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm4_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-4000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 4000";
+		volume="engineOn * ((rpm factor [2650, 3750]) * (1 - (rpm factor [3650, 4750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm5_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-5000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 5000";
+		volume="engineOn * ((rpm factor [3650, 4750]) * (1 - (rpm factor [4650, 5750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm5_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-5000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 5000";
+		volume="engineOn * ((rpm factor [3650, 4750]) * (1 - (rpm factor [4650, 5750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Rpm6_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-6000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 6000";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm6_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-6000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 6000";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Hatchback_02_Engine_Ext_Broken_SoundShader: baseEngineHatchback_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\DZ\sounds\vehicles\shared\add_layers\Offroad_Engine_Ext_Broken",
+				1
+			}
+		};
+		frequency=0.89999998;
+		volume="0.9 * 0.75 * 1 * (0.7 + 0.3 * (speed factor [10,60])) * engineOn * 1 * ((900 + ((rpm - 900)/(6200/5600))) factor [(((3250+4400)/2) - 2.5*200),(((3250+4400)/2) + 200)]) * ((1 - 0.25*doors) max campos) * (rpm factor[(6000 - 500),6000])";
+	};
+	
+	//sedan_02
+	class baseEngineSedan_02_SoundShader
+	{
+		range=80;
+	};
+	class Sedan_02_Engine_Ext_Rpm0_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-700rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 750";
+		volume="0.75 * 1 * engineOn * 0.4 * ((750 + ((rpm - 750)/(8000/5600))) factor [(((750+1000)/2) + 2.5*50),(((750+1000)/2) - 50)]) * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Rpm1_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-1000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 1000";
+		volume="engineOn * ((rpm factor [700, 1250]) * (1 - (rpm factor [1150, 1750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.6 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm1_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-1000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 1000";
+		volume="engineOn * ((rpm factor [700, 1250]) * (1 - (rpm factor [1150, 1750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Rpm2_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-2000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 2000";
+		volume="engineOn * ((rpm factor [1150, 1750]) * (1 - (rpm factor [1650, 2750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.85 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm2_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-2000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 2000";
+		volume="engineOn * ((rpm factor [1150, 1750]) * (1 - (rpm factor [1650, 2750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Rpm3_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-3000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 3000";
+		volume="engineOn * ((rpm factor [1650, 2750]) * (1 - (rpm factor [2650, 3750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm3_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-3000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 3000";
+		volume="engineOn * ((rpm factor [1650, 2750]) * (1 - (rpm factor [2650, 3750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Rpm4_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-4000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 4000";
+		volume="engineOn * ((rpm factor [2650, 3750]) * (1 - (rpm factor [3650, 4750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm4_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-4000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 4000";
+		volume="engineOn * ((rpm factor [2650, 3750]) * (1 - (rpm factor [3650, 4750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)"
+	};
+	class Sedan_02_Engine_Ext_Rpm5_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-5000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 5000";
+		volume="engineOn * ((rpm factor [3650, 4750]) * (1 - (rpm factor [4650, 5750]))) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm5_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-5000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 5000";
+		volume="engineOn * ((rpm factor [3650, 4750]) * (1 - (rpm factor [4650, 5750]))) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Rpm6_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-6000rpm-load",
+				1
+			}
+		};
+		frequency="rpm / 6000";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.1, 0.45]) * (0.7 + 0.3 * (speed factor [10, 60])) * 1 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm6_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\VehicleRework\sounds\vehicles\engines\gasoline-i4\i4-6000rpm-offload",
+				1
+			}
+		};
+		frequency="rpm / 6000";
+		volume="engineOn * (rpm factor [4650, 5750]) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
+	};
+	class Sedan_02_Engine_Ext_Broken_SoundShader: baseEngineSedan_02_SoundShader
+	{
+		samples[]=
+		{
+			
+			{
+				"\DZ\sounds\vehicles\shared\add_layers\Offroad_Engine_Ext_Broken",
+				1
+			}
+		};
+		frequency=0.89999998;
+		volume="1.4 * 0.75 * 1 * (0.7 + 0.3 * (speed factor [10,60])) * engineOn * 1 * ((900 + ((rpm - 900)/(6500/5600))) factor [(((3250+4400)/2) - 2.5*200),(((3250+4400)/2) + 200)]) * ((1 - 0.25*doors) max campos) * (rpm factor[5400,5900])";
+	};
+	
 	//humvee----------------------------------------------------------------------------
-	// yes its technically a diesel v8 but
-	// but I couldn't get a quality recording of a v8 diesel
+	// yes its technically a diesel v8 but but I couldn't 
+	// get a quality recording of a v8 diesel so im using gas v8 sounds
 	class baseEngineOffroad_02_SoundShader
 	{
 		range=80;
@@ -1410,6 +1696,7 @@ class CfgSoundShaders
 		frequency="rpm / 3500";
 		volume="engineOn * (rpm factor [2750, 3350]) * (thrust factor[0.6, 0.2]) * (0.7 + 0.3 * (speed factor [10, 60])) * 0.8 * ((1 - 0.25*doors) max campos)";
 	};
+	//will this ever even be played? i gave it a rev limiter lol
 	class Offroad_02_Engine_Ext_Broken_SoundShader: baseEngineOffroad_02_SoundShader
 	{
 		samples[]=
@@ -1485,7 +1772,66 @@ class CfgSoundSets
 		volumeFactor=1;
 	};
 	
+	//hatchback 02
+	class baseEngineHatchback_02_EXT_SoundSet
+	{
+		sound3DProcessingType="Vehicle_Ext_3DProcessingType";
+		distanceFilter="softVehiclesDistanceFreqAttenuationFilter";
+		volumeCurve="vehicleEngineAttenuationCurve";
+		volumeFactor=1;
+		occlusionFactor=0;
+		obstructionFactor=0;
+		spatial=1;
+		loop=1;
+	};
+	class Hatchback_02_Engine_Ext_Rpm6_SoundSet: baseEngineHatchback_02_EXT_SoundSet
+	{
+		soundShaders[]=
+		{
+			"Hatchback_02_Engine_Ext_Rpm6_SoundShader"
+		};
+		volumeFactor=1;
+	};
+	class Hatchback_02_Engine_Offload_Ext_Rpm6_SoundSet: baseEngineHatchback_02_EXT_SoundSet
+	{
+		soundShaders[]=
+		{
+			"Hatchback_02_Engine_Offload_Ext_Rpm6_SoundShader"
+		};
+		volumeFactor=1;
+	};
+	
+	//sedan 02
+	class baseEngineSedan_02_EXT_SoundSet
+	{
+		sound3DProcessingType="Vehicle_Ext_3DProcessingType";
+		distanceFilter="softVehiclesDistanceFreqAttenuationFilter";
+		volumeCurve="vehicleEngineAttenuationCurve";
+		volumeFactor=1;
+		occlusionFactor=0;
+		obstructionFactor=0;
+		spatial=1;
+		loop=1;
+	};
+	class Sedan_02_Engine_Ext_Rpm6_SoundSet: baseEngineSedan_02_EXT_SoundSet
+	{
+		soundShaders[]=
+		{
+			"Sedan_02_Engine_Ext_Rpm6_SoundShader"
+		};
+		volumeFactor=1;
+	};
+	class Sedan_02_Engine_Offload_Ext_Rpm6_SoundSet: baseEngineSedan_02_EXT_SoundSet
+	{
+		soundShaders[]=
+		{
+			"Sedan_02_Engine_Offload_Ext_Rpm6_SoundShader"
+		};
+		volumeFactor=1;
+	};
+	
 	//humvee----------------------------------------------------------------------------
+	//uses also baseEngine_EXT_SoundSet for some reason? so no need to define
 	class offroad_02_Engine_Ext_Rpm6_SoundSet: baseEngine_EXT_SoundSet
 	{
 		soundShaders[]=
